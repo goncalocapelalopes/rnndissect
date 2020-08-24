@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RNNDissect Visualization</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<!-- End of Bootstrap-->
+<script src="scripts/overview.js"></script>
+<script src="scripts/toolbar.js"></script>
+<link rel="stylesheet" type="text/css" href="css/overview.css">
+<link rel="stylesheet" type="text/css" href="css/toolbar.css">
+
+</head>
+<body>
+    <div id="toolbar">
+        <div id="set-input" class="glyphtext">
+            <img src="assets/input_icon_white.png">
+            <span>Set Input</span>
+        </div>
+        <div id="set-model" class="glyphtext">
+            <img src="assets/model_icon_white.png">
+            <span>Set Model</span>
+        </div>
+        <div id="other-settings" class="glyphtext">
+            <img src="assets/settings_icon_white.png">
+            <span>Other Settings</span>
+        </div>  
+    </div>
+    <div class="modal" id="set-input-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Set a new input</h5>
+                </div>
+                <div class="modal-body">
+                    <h7><strong>Choose your own input:</strong></h7>
+                    </br>
+                    <input id="set-input-text" type="text" name="input text">
+                    </br>
+                    <h7 class="or"><strong>Or...</strong></h7>
+                    </br>
+                    <h7><strong>Choose from the following list:</strong></h7>
+                    </br>
+                    <ul id="available-inputs" class="overflow-list"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button id="set-input-save" class="button confirm inactive" type="button">Save</button>
+                    <button id="set-input-cancel" class="button cancel" type="button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="set-model-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Set a new model</h5>
+                </div>
+                <div class="modal-body">
+                    <h7><strong>Choose from the following list:</strong></h7>
+                    </br>
+                    <ul id="available-models">
+                        <li id="simple_rnn">simple rnn</li>
+                        <li id="simple_rnn_2layers">simple rnn (2 layers)</li>
+                        <li id="simple_rnn_2layers_bidir">simple rnn (2 layers, bidirectional)</li>
+                        <li id="lstm">lstm</li>
+                        <li id="lstm_2layers">lstm (2 layers)</li>
+                        <li id="lstm_2layers_bidir">lstm (2 layers, bidirectional)</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button id="set-model-save" class="button confirm" type="button">Save</button>
+                    <button id="set-model-cancel" class="button cancel" type="button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="settings-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Other settings</h5>
+                </div>
+                <div class="modal-body">
+                    <h7><strong>Activation and interpretation values should be shown...</strong></h7>
+                    </br>
+                    <input id="other-settings-mode-complete" type="radio" name="mode" value="complete" checked/>
+                    <label for="other-settings-mode-complete">Completely</label>
+                    <input id="other-settings-mode-incremental" type="radio" name="mode" value="incremental"/>
+                    <label for="other-settings-mode-incremental">Incrementally</label>
+                    </br>
+
+                    <h7><strong>Show activations...</strong></h7>
+                    </br>
+                    <input id="other-settings-acts-layer" type="radio" name="acts" value="layer" checked/>
+                    <label for="other-settings-acts-layer">By layer</label>
+                    <input id="other-settings-acts-node" type="radio" name="acts" value="node"/>
+                    <label for="other-settings-acts-node">By node</label>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="settings-save" class="button confirm" type="button">Save</button>
+                    <button id="settings-cancel" class="button cancel" type="button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="DE"></div>
+        <div id="FV"></div>
+        <div id="A"></div>
+    </div>
+    
+
+    </div>
+</body>
+</html>
